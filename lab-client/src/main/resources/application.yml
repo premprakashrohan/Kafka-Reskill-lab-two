@@ -1,14 +1,6 @@
 server:
   port: 8771
 
-eureka:
-  client:
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8086/eureka}
-  instance:
-    preferIpAddress: false
-    
 spring:
   application:
     name: microservices-kafka
@@ -21,7 +13,17 @@ spring:
       value-deserializer: com.ibm.kafka.util.common.serialization.CustomDeserializer
       max-poll-records: 1
       enable-auto-commit: false
+      
     producer:
       bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.LongSerializer
       value-serializer: com.ibm.kafka.util.common.serialization.CustomSerializer
+    topics:  UNITED_KINGDOM
+eureka:
+  client:
+    fetchRegistry: false
+    serviceUrl:
+        defaultZone: ${EUREKA_URI:http://localhost:8761/eureka/}
+  instance:
+    preferIpAddress: false
+     
